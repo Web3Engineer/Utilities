@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Play Example</title>
+  </head>
+  <body>
+    <button onclick="playSound()">Play Sound</button>
+
+    <script>
+      function playSound() {
+        const audio = document.createElement("audio");
+        audio.src = "https://publicdomainaudiobibles.com/content/mp3/KJV/PSA10.mp3";
+        /*onended, onloadeddata, oncanplay, oncanplaythrough, to listen for audio-related events.*/
+        audio.oncanplay = function () {
+          audio.play();
+        };
+        audio.onended = function () {
+          alert("Audio Finished Playing.");
+        };
+      }
+    </script>
+  </body>
+</html>

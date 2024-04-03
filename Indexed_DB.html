@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IndexedDB Example</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Open (or create) a database
+        var request = indexedDB.open("myDatabase", 868);
+
+        request.onupgradeneeded = function (event) {
+          // Create an object store
+          var db = event.target.result;
+          var objectStore = db.createObjectStore("keyvaluepairs");
+        };
+
+        request.onsuccess = function (event) {
+          var db = event.target.result;
+
+          // Start a transaction
+          var transaction = db.transaction(["keyvaluepairs"], "readwrite");
+
+          // Get the object store
+          var objectStore = transaction.objectStore("keyvaluepairs");
+
+          // Add key-value pairs
+          objectStore.put("value1", "key1");
+          objectStore.put("value2", "key2");
+
+          // Retrieve a value by key
+          var getRequest = objectStore.get("key1");
+
+          getRequest.onsuccess = function (event) {
+            var value = event.target.result;
+            console.log("Value retrieved:", value); // Output: Value retrieved: value1
+            document.getElementById("output").textContent = "Value retrieved: " + value;
+          };
+        };
+
+        request.onerror = function (event) {
+          console.error("Database error: " + event.target.errorCode);
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <h1>IndexedDB Example</h1>
+    <p id="output"></p>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!--
+  >>Postions
+    Static: This is the default value. Elements with position: static are not affected by the top, bottom, left, and right properties.
+
+    Relative: An element with position: relative is positioned relative to its normal position. Setting the top, right, bottom, and left properties of a relatively-positioned element will cause it to be adjusted away from its normal position.
+
+    Fixed: An element with position: fixed is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled. The top, right, bottom, and left properties are used to position the element.
+
+    Absolute: An element with position: absolute is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed). However, if an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.
+
+    Sticky: An element with position: sticky is positioned based on the user's scroll position. It is relatively positioned until a given offset position is met in the viewport, then it "sticks" in place (like position: fixed).
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .static {
+    position: static;
+    width: 200px;
+    height: 50px;
+    border: 3px solid #73AD21;
+  }
+
+  .relative {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    border: 3px solid #73AD21;
+    top: 50px;
+    left: 250px;
+  }
+
+  .fixed {
+    position: fixed;
+    width: 200px;
+    height: 50px;
+    border: 3px solid #73AD21;
+    top: 150px;
+    right: 50px;
+  }
+
+  .absolute {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    border: 3px solid #73AD21;
+    top: 250px;
+    left: 300px;
+  }
+
+  .sticky {
+    position: sticky;
+    width: 200px;
+    height: 50px;
+    border: 3px solid #73AD21;
+    top: 0;
+  }
+</style>
+</head>
+<body style="height:2000px">
+
+<div class="static">This div has position static.</div>
+
+<div class="relative">This div has position relative and is moved 50px down and 250px to the right.</div>
+
+<div class="fixed">This div has position fixed and is positioned 150px from the top and 50px from the right. Scroll the page and observe.</div>
+
+<div class="absolute">This div has position absolute and is positioned 250px from the top and 300px from the left.</div>
+
+<div class="sticky">This div has position sticky and sticks at the top of the page when you scroll.</div>
+
+</body>
+</html>
+

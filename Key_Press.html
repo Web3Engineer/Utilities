@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+
+    <button onclick="pasteFromClipboard()">Paste</button>
+
+    <div id="output"></div>
+
+    <input id="input">
+
+<script>
+function simulateTabKeyPress() {
+var e = new KeyboardEvent('keydown', {
+key: 'Tab',
+keyCode: 9,
+which: 9,
+shiftKey: false, // Simulate Tab key without Shift key
+});
+document.dispatchEvent(e);
+}
+
+
+function pasteFromClipboard() {
+simulateTabKeyPress();
+navigator.clipboard.readText().then(clipText => {document.activeElement.value = clipText;});
+}
+</script>
+</body>
+</html>

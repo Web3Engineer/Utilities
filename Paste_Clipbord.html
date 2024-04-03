@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+
+        <div id="outputDiv"></div>
+        <button onclick="pasteFromClipbord()">Paste</button>
+            <script>
+        
+    // !!!!MUST SET PERMISION IN FIREFOX!!!!
+    // Enter--> "about:config" in navigation bar
+    // Click--> "Accept the Risk and Continue"
+    // Search--> "dom.events.testing.asyncClipboard" and set "true"
+    //           "dom.events.asyncClipboard.readText" and set "true"
+                function pasteFromClipbord() {
+                    navigator.clipboard.readText().then(clipText => {
+                        document.getElementById("outputDiv").innerText=clipText;
+                        alert("You have pasted: '" + clipText + "' from Your Clipboard");
+                        
+                        });
+                }
+                </script>
+        
+            
+        </body>
+        
+        
+        
+
+</html>

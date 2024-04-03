@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text File Saver</title>
+</head>
+<body>
+    <h1>Text File Saver</h1>
+    <input type="text" id="textInput" placeholder="Enter text">
+    <button id="saveButton">Save to File</button>
+    <p id="message"></p>
+
+    <script>
+        const textInput = document.getElementById('textInput');
+        const saveButton = document.getElementById('saveButton');
+        const message = document.getElementById('message');
+
+        saveButton.addEventListener('click', () => {
+            const text = textInput.value;
+
+            if (!text) {
+                message.textContent = 'Please enter some text.';
+                return;
+            }
+
+            // Create a Blob containing the text
+            const blob = new Blob([text], { type: 'text/plain' });
+
+            // Create a download link
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'myText.txt';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+
+            // Trigger a click event to initiate the download
+            a.click();
+
+            // Cleanup
+            URL.revokeObjectURL(a.href);
+            document.body.removeChild(a);
+
+            message.textContent = 'Text saved successfully!';
+            textInput.value = ''; // Clear the input field
+        });
+    </script>
+</body>
+</html>

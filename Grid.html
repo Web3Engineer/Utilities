@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #00ad4e;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 3px;
+        transform: translate(0px, 0px);
+        max-width: 80%; /* Adjust the max-width percentage as needed */
+        margin: 0 auto; /* Center the grid container horizontally */
+      }
+      .grid-item {
+        aspect-ratio: 1 / 1;
+        padding: 0px;
+        background-color: #249c00;
+        font-weight: 700;
+        font-family: "Consolas", monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10vw;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container" id="gridContainerID">
+      <div class="grid-item" id="1">1</div>
+      <div class="grid-item" id="2">2</div>
+      <div class="grid-item" id="3">3</div>
+      <div class="grid-item" id="4">4</div>
+      <div class="grid-item" id="5">5</div>
+      <div class="grid-item" id="6">6</div>
+      <div class="grid-item" id="7">7</div>
+      <div class="grid-item" id="8">8</div>
+      <div class="grid-item" id="9">9</div>
+      <div class="grid-item" id="del">🔙</div>
+      <div class="grid-item" id="0">0</div>
+      <div class="grid-item" id="ok">🆗</div>
+    </div>
+    <script></script>
+  </body>
+</html>

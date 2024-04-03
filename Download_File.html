@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<style>
+</style>
+<script>
+
+let fileName = "some file name"; let fileExtension = "md"; let fileData = "some file data";
+function download(_fileName, _extension, _data) {
+let element = document.createElement('a');
+element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(_data));
+element.setAttribute('download', `${_fileName}.${_extension}`);
+element.style.display = 'none';
+document.body.appendChild(element);
+element.click();
+document.body.removeChild(element);
+}
+download(fileName, fileExtension, fileData);
+
+</script>
+</body>
+</html>

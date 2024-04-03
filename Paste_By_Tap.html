@@ -1,0 +1,18 @@
+<body>
+<script>
+    
+let clickCount = 0;
+document.addEventListener('click', () => {
+clickCount++;
+if (clickCount === 3) {
+pasteFromClipboard();
+clickCount = 0;
+}});
+function pasteFromClipboard() {
+navigator.clipboard.readText().then(clipText => {
+const activeElement = document.activeElement;
+if (activeElement && activeElement.tagName === 'INPUT') {activeElement.value = clipText;}
+});}
+
+</script>
+</body>

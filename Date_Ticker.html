@@ -1,0 +1,79 @@
+JavaScript Countdown/Count-up Timer/Clock/Ticker
+
+    A simple JavaScript countdown/Count-up timer/clock/ticker to/from the target date and time of your choice. Just copy and paste widget code to your Web pages. You can also customize the display format, foreground and background colors of the countdown timer.
+    You can omit most parameters. Default values will be used in that case. CountActive is used to enable to disable counting. If you only want to show a fixed static time-remaining message, set it to false. It'll save on browser resources.
+    DisplayFormat allows you to format the countdown/Count-up display to your liking. For example, instead of the default English, you can use terms from your own language, or make any other desired adjustments, like omitting the Seconds segment.
+    Use FinishMessage to display a desired message (or nothing, i.e. ""), when countdown reaches zero. Obviously never displayed when counting up.
+    CountStepper specifies the step value or period (in seconds) for the counter. Use positive number for counting up, negative number for counting down. Value is rounded up to next integer. When specifying positive (count up), be sure to specify past TargetDate, otherwise only the finish message is displayed.
+    Single digits are displayed with leading zeros, unless LeadingZero is set to false.
+
+<script language="JavaScript">
+TargetDate = "2031-12-31T05:00:00";
+BackColor = "palegreen";
+ForeColor = "navy";
+CountActive = true;
+CountStepper = -1;
+LeadingZero = true;
+DisplayFormat = "%%D%% Days, %%H%% Hours, %%M%% Minutes, %%S%% Seconds.";
+FinishMessage = "It is finally here!";
+</script>
+<script language="JavaScript">function calcage(secs, num1, num2) {
+    s = ((Math.floor(secs/num1))%num2).toString();
+    if (LeadingZero && s.length < 2)
+      s = "0" + s;
+    return "<b>" + s + "</b>";
+  }
+  
+  function CountBack(secs) {
+    if (secs < 0) {
+      document.getElementById("cntdwn").innerHTML = FinishMessage;
+      return;
+    }
+    DisplayStr = DisplayFormat.replace(/%%D%%/g, calcage(secs,86400,100000));
+    DisplayStr = DisplayStr.replace(/%%H%%/g, calcage(secs,3600,24));
+    DisplayStr = DisplayStr.replace(/%%M%%/g, calcage(secs,60,60));
+    DisplayStr = DisplayStr.replace(/%%S%%/g, calcage(secs,1,60));
+  
+    document.getElementById("cntdwn").innerHTML = DisplayStr;
+    if (CountActive)
+      setTimeout("CountBack(" + (secs+CountStepper) + ")", SetTimeOutPeriod);
+  }
+  
+  function putspan(backcolor, forecolor) {
+   document.write("<span id='cntdwn' style='background-color:" + backcolor + 
+                  "; color:" + forecolor + "'></span>");
+  }
+  
+  if (typeof(BackColor)=="undefined")
+    BackColor = "white";
+  if (typeof(ForeColor)=="undefined")
+    ForeColor= "black";
+  if (typeof(TargetDate)=="undefined")
+    TargetDate = "12/31/2020 5:00 AM";
+  if (typeof(DisplayFormat)=="undefined")
+    DisplayFormat = "%%D%% Days, %%H%% Hours, %%M%% Minutes, %%S%% Seconds.";
+  if (typeof(CountActive)=="undefined")
+    CountActive = true;
+  if (typeof(FinishMessage)=="undefined")
+    FinishMessage = "";
+  if (typeof(CountStepper)!="number")
+    CountStepper = -1;
+  if (typeof(LeadingZero)=="undefined")
+    LeadingZero = true;
+  
+  
+  CountStepper = Math.ceil(CountStepper);
+  if (CountStepper == 0)
+    CountActive = false;
+  var SetTimeOutPeriod = (Math.abs(CountStepper)-1)*1000 + 990;
+  putspan(BackColor, ForeColor);
+  var dthen = new Date(TargetDate);
+  var dnow = new Date();
+  if(CountStepper>0)
+    ddiff = new Date(dnow-dthen);
+  else
+    ddiff = new Date(dthen-dnow);
+  gsecs = Math.floor(ddiff.valueOf()/1000);
+  CountBack(gsecs);
+  </script>
+

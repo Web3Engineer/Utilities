@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage Example</title>
+</head>
+<body>
+
+<!-- Input field to enter the key -->
+<input type="text" id="inputKey" placeholder="Enter the key here">
+
+<!-- Input field to enter the string -->
+<input type="text" id="inputString" placeholder="Enter your string here">
+
+<!-- Button to save the string to localStorage -->
+<button onclick="saveString()">Save to LocalStorage</button>
+
+<!-- Button to retrieve the string from localStorage -->
+<button onclick="retrieveString()">Retrieve from LocalStorage</button>
+
+<!-- Display the retrieved string -->
+<p id="retrievedString"></p>
+
+<script>
+    // Function to save string to localStorage
+    function saveString() {
+        let key = document.getElementById('inputKey').value;
+        let str = document.getElementById('inputString').value;
+        localStorage.setItem(key, str);
+        alert('String saved to LocalStorage!');
+    }
+
+    // Function to retrieve string from localStorage
+    function retrieveString() {
+        let key = document.getElementById('inputKey').value;
+        let storedStr = localStorage.getItem(key);
+        document.getElementById('retrievedString').innerText = (storedStr);
+    }
+</script>
+
+</body>
+</html>

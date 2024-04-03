@@ -1,0 +1,679 @@
+<!--
+
++++ELEMENTS+++++++++
++
++ IMG
++  position
++  id (is its var name)
++  src
++  onclick
++
++
++ TXT
++  position
++  id
++  src
++  onclick
++
+++++++++++++++++++++
+
+
+>>>element effect
+
+>>>download
+
+>>>copy
+
+>>>remove by id
+    
+    >>>Postions
+    Static: This is the default value. Elements with position: static are not affected by the top, bottom, left, and right properties.
+
+    Relative: An element with position: relative is positioned relative to its normal position. Setting the top, right, bottom, and left properties of a relatively-positioned element will cause it to be adjusted away from its normal position.
+
+    Fixed: An element with position: fixed is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled. The top, right, bottom, and left properties are used to position the element.
+
+    Absolute: An element with position: absolute is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed). However, if an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.
+
+    Sticky: An element with position: sticky is positioned based on the user's scroll position. It is relatively positioned until a given offset position is met in the viewport, then it "sticks" in place (like position: fixed).
+
+-->
+<!DOCTYPE html>
+<html>
+<body>
+    
+
+<script>
+//Using document.write() after a document is loaded, deletes all existing HTML!!!
+function overWriteWebPage(){
+  document.write("<div> Some Data! </div>");
+  document.write("<div> Some MORE Data! </div>");
+}
+////////////////////////////////
+//Some MORE Data!
+//
+////////////////////////////////
+
+function addToWebPage(){
+document.body.appendChild("<div> Some Data! </div>");
+document.body.appendChild("<div> Some MORE Data! </div>");
+}
+////////////////////////////////
+// Some Data!
+// Some MORE Data!
+//
+////////////////////////////////
+
+
+
+function dashbordPlacement(_elementToPlace_byID){}
+
+
+
+function img({ 
+    id,
+    src,
+    position='relative', 
+    top='auto', 
+    bottom='auto',
+    left='auto',
+    right='auto',
+    margin='auto',
+    padding='0px',
+    display='block',
+    height='auto',
+    width='100%',
+    zIndex=0, 
+ }){
+    const img = document.createElement("img");
+    img.id = id;
+    img.src = src;
+    img.style.position = position;
+    img.style.top = top;
+    img.style.bottom = bottom;
+    img.style.left = left;
+    img.style.right = right;
+    img.style.margin = margin;
+    img.style.padding = `${padding}px`;
+    img.style.display = display;
+    img.style.height = height;
+    img.style.width = `${width}%`;
+    img.style.zIndex = zIndex;
+    document.body.appendChild(img);
+}
+img({
+    id: 'imgBeach',
+    src: './Test_Pics/beach.jpg',
+    position: 'relative', 
+    top: 'auto',
+    bottom: 'auto',
+    left: 'auto',
+    right: 'auto',
+    margin: 'auto',
+    padding: 0,
+    display: 'block',
+    height: 'auto',
+    width: 100,
+    zIndex: 0
+});
+img({
+    id: 'imgF',
+    src: './Test_Pics/f.png',
+    position: 'relative', 
+    top: 'auto',//px
+    bottom: 'auto',//px
+    left: 'auto',//px
+    right: 'auto',//px
+    margin: 'auto',//px
+    padding: 0,
+    display: 'block',
+    height: 'auto',
+    width: 50,
+    zIndex: 0
+});
+img({
+    id: 'imgCabin',
+    src: './Test_Pics/cabin.jpg',
+    position: 'absolute', 
+    top: '390px',//px
+    bottom: 'auto',//px
+    left: '0px',//px
+    right: '0px',//px
+    margin: 'auto',//px
+    padding: 0,
+    display: 'block',
+    height: 'auto',
+    width: 100,
+    zIndex: -1
+});
+img({
+    id: 'imgRect',
+    src: './Test_Pics/rect.jpeg',
+    position: 'relative', 
+    top: 'auto',//px
+    bottom: 'auto',//px
+    left: 'auto',//px
+    right: 'auto',//px
+    margin: 'auto',//px
+    padding: 0,
+    display: 'block',
+    height: 'auto',
+    width: 80,
+    zIndex: 0
+});
+
+function text({ 
+    id,
+    content,
+    position='relative', 
+    top='auto', 
+    bottom='auto',
+    left='0px',
+    right='0px',
+    margin='auto',
+    padding='0px',
+    display='block',
+    fontSize='24px',
+    color='black',
+    fontFamily='Arial',
+    textAlign='center',
+    zIndex=0 
+}){
+    const txt = document.createElement("p");
+    txt.id = id;
+    txt.innerText = content;
+    txt.style.position = position;
+    txt.style.top = top;
+    txt.style.bottom = bottom;
+    txt.style.left = left;
+    txt.style.right = right;
+    txt.style.margin = margin;
+    txt.style.padding = padding;
+    txt.style.display = display;
+    txt.style.fontSize = fontSize;
+    txt.style.color = color;
+    txt.style.fontFamily = fontFamily;
+    txt.style.textAlign = textAlign;
+    txt.style.zIndex = zIndex;
+    document.body.appendChild(txt);
+}
+text({
+    id: 'sampleText',
+    content: 'This is a sample text.',
+    fontSize: '40px',
+    color: 'red'
+});
+
+function button({ 
+    id,
+    label,
+    onClick,
+    position='relative', 
+    top='auto', 
+    bottom='auto',
+    left='auto',
+    right='auto',
+    margin='auto',
+    padding='10px 20px',
+    display='block',
+    backgroundColor='grey',
+    color='white',
+    fontSize='16px',
+    borderThickness=5,
+    borderLine='solid',
+    borderColor='red',
+    roundedBorder='25px',
+    zIndex=0,
+}){
+    const btn = document.createElement("button");
+    btn.id = id;
+    btn.innerHTML = label;
+    btn.onclick = onClick;
+    btn.style.position = position;
+    btn.style.top = top;
+    btn.style.bottom = bottom;
+    btn.style.left = left;
+    btn.style.right = right;
+    btn.style.margin = margin;
+    btn.style.padding = padding;
+    btn.style.display = display;
+    btn.style.backgroundColor = backgroundColor;
+    btn.style.color = color;
+    btn.style.fontSize = fontSize;
+    btn.style.border = `${borderThickness}px ${borderLine} ${borderColor}`;
+    btn.style.borderRadius = roundedBorder;
+    btn.style.zIndex = zIndex;
+    document.body.appendChild(btn);
+}
+const buttonRaw = button({
+    id: 'sampleButtonRaw',
+    label: 'Click me!',
+    onClick: function() { alert('Button clicked!'); },
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    margin: '-25px 0 0 -65px',  // half the height and width for centering
+    padding: '20px 20px',
+    backgroundColor: 'blue',
+    color: 'pink',
+    fontSize: '20px'
+});
+const buttonCascade = button({
+    left: '0px',
+    right: '0px',
+    id: 'sampleButtonCascade',
+    label: 'Click me!',
+    onClick: function() { alert('Button clicked!'); },
+    backgroundColor: 'blue',
+    color: 'white',
+    fontSize: '20px'
+});
+
+
+
+function imgUp(_imgID, _distance, _time) {
+  const img = document.getElementById(_imgID);
+  const topPos = parseInt(img.style.top) || 0;
+  const startTime = performance.now();
+  const duration = _time * 1000;
+
+  function animate(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const newPos = topPos - (_distance * progress);
+    img.style.top = newPos + "px";
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+//imgUp('imgID1', 300, 1);      
+
+function imgDown(_imgID, _distance, _time) {
+  const img = document.getElementById(_imgID);
+  const start = performance.now();
+  const startY = img.offsetTop;
+  const endY = startY + _distance;
+
+  function step() {
+    const elapsed = performance.now() - start;
+    const progress = elapsed / (_time * 1000);
+    const newY = startY + (endY - startY) * progress;
+
+    if (progress < 1) {
+      img.style.top = newY + 'px';
+      requestAnimationFrame(step);
+    } else {
+      img.style.top = endY + 'px';
+    }
+  }
+  requestAnimationFrame(step);
+}
+//imgDown('imgID1', 300, 2);
+//imgDown('imgID4', 300, 2);
+
+function imgLeft(_imgID, _distance, _time) {
+  const img = document.getElementById(_imgID);
+  const distancePerMs = _distance / (_time * 1000);
+  const initialPos = parseInt(img.style.left) || 0;
+  const startTime = performance.now();
+
+  const move = function(currentTime) {
+    const elapsedTime = currentTime - startTime;
+    const newPos = initialPos - (elapsedTime * distancePerMs);
+    img.style.left = newPos + "px";
+    if (elapsedTime < (_time * 1000)) {
+      requestAnimationFrame(move);
+    }
+  };
+
+  requestAnimationFrame(move);  
+}
+//imgLeft('imgID1', 300, 1);
+
+function imgRight(_imgID, _distance, _time) {
+  const img = document.getElementById(_imgID);
+  const start = performance.now();
+  const startX = img.offsetLeft;
+  const endX = startX + _distance;
+
+  function animate() {
+    const elapsed = performance.now() - start;
+    const progress = elapsed / (_time * 1000);
+
+    if (progress > 1) {
+      img.style.left = endX + 'px';
+      return;
+    }
+
+    const newX = startX + (progress * _distance);
+    img.style.left = newX + 'px';
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+}
+//imgRight('imgID1', 300, 2);
+//imgRight('imgID4', 300, 2);
+
+
+function imgResize(_imgID, _targetSize, _time) {
+
+const img = document.getElementById(_imgID);
+
+img.onload = function() {
+const naturalWidth = img.naturalWidth;
+const naturalHeight = img.naturalHeight;
+const startWidth = img.offsetWidth || img.width;
+const startHeight = img.offsetHeight || img.height;
+const startTime = performance.now();
+
+function animate() {
+  const elapsedTime = performance.now() - startTime;
+  if (elapsedTime >= _time * 1000) {
+    img.style.width = _targetSize + 'px';
+    img.style.height = (_targetSize * naturalHeight) / naturalWidth + 'px';
+    return;}
+
+  const progress = elapsedTime / (_time * 1000);
+  const currentWidth = startWidth + (_targetSize - startWidth) * progress;
+  const currentHeight = startHeight + ((_targetSize * naturalHeight) / naturalWidth - startHeight) * progress;
+  img.style.width = currentWidth + 'px';
+  img.style.height = currentHeight + 'px';
+  window.requestAnimationFrame(animate);
+}
+
+window.requestAnimationFrame(animate);
+};
+
+
+}
+//imgResize('imgID1', 300, 6);
+//imgResize('imgID2', 300, 6);
+
+
+function imgReduceOpacity(_imgID, _targetOpacity, _time) {
+    const img = document.getElementById(_imgID);
+    const originalOpacity = parseFloat(getComputedStyle(img).opacity);
+    const start = performance.now();
+    
+    function reduceOpac(timestamp) {
+      const timeElapsed = timestamp - start;
+      const opacity = Math.max(originalOpacity - (timeElapsed / (_time * 1000)), _targetOpacity);
+      img.style.opacity = opacity;
+      
+      if (timeElapsed < (_time * 1000)) {requestAnimationFrame(reduceOpac);}
+    }
+    
+    requestAnimationFrame(reduceOpac);
+  }
+//imgReduceOpacity('imgID1', .2, 5);//('ID, 0-1, DURATION_IN_SECONDS')
+//imgReduceOpacity('imgID4', .2, 5);
+
+////Makes transparent instantly, then increases to target opacity with a delay of n-Seconds.  
+function imgAddOpacity(_imgID, _targetOpacity, _time) {
+    const img = document.getElementById(_imgID);
+    const startOpacity = img.style.opacity;
+    const startTime = performance.now();
+  
+    const animate = function() {
+      const timeElapsed = performance.now() - startTime;
+      const progress = timeElapsed / (_time * 1000);
+  
+      if (progress > 1) {
+        progress = 1;
+      }
+  
+      const currentOpacity = startOpacity - (startOpacity - _targetOpacity) * progress;
+      img.style.opacity = currentOpacity;
+  
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+  
+    requestAnimationFrame(animate);
+  }
+//imgAddOpacity('imgID1', 1, 10);//('ID, 0-1, DURATION_IN_SECONDS')
+
+
+function imgSpin(_imgID, _revolutions = 1, _time = 5000, _angle = 0) {
+    const img = document.getElementById(_imgID);
+    const startAngle = _angle;
+    const startTime = performance.now();
+    const endTime = startTime + _time;
+  
+    function rotate() {
+      const now = performance.now();
+      if (now >= endTime) {
+        img.style.transform = `rotate(${startAngle}deg)`;
+        return;
+      }
+      const elapsed = now - startTime;
+      const progress = elapsed / _time;
+      const angle = progress * 360 * _revolutions + startAngle;
+      img.style.transform = `rotate(${angle}deg)`;
+      requestAnimationFrame(rotate);
+    }
+  
+    requestAnimationFrame(rotate);
+  }
+//imgSpin('imgID1', 3, 3000, 180);//(ID, REVOLUTIONS, TIME, START_AND_STOP_ANGLE)  
+//imgSpin('imgID4', 3, 3000, 180);
+
+function imgSpin360(_imgID, _time = 1, _angle = 360,) {
+  const img = document.getElementById(_imgID);
+  const start = performance.now();
+  const end = start + _time * 1000;
+  
+  function animate() {
+    const now = performance.now();
+    const progress = (now - start) / (_time * 1000);
+    const angle = _angle * Math.min(progress, 1);
+    img.style.transform = 'rotate(' + angle + 'deg)';
+    if (now < end) {
+      window.requestAnimationFrame(animate);
+    }
+  }
+  
+  window.requestAnimationFrame(animate);
+}
+//imgSpin360('imgID1', 3, 180); // in 3 seconds, spin the image to 180 degrees
+
+
+function download(_fileName, _extension, _data) {
+let element = document.createElement('a');
+element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(_data));
+element.setAttribute('download', `${_fileName}.${_extension}`);
+element.style.display = 'none';
+document.body.appendChild(element);
+element.click();
+document.body.removeChild(element);
+}
+let fileName = "some file name"; let fileExtension = "md"; let fileData = "some file data";
+//download(fileName, fileExtension, fileData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function imgShrinkToSquare(_imgID, _destSize, _time) {
+  const img = document.getElementById(_imgID);
+  const origWidth = img.clientWidth;
+  const origHeight = img.clientHeight;
+  const widthDiff = origWidth - _destSize;
+  const heightDiff = origHeight - _destSize;
+  const widthStep = widthDiff / (_time * 60);
+  const heightStep = heightDiff / (_time * 60);
+  let currentWidth = origWidth;
+  let currentHeight = origHeight;
+  let startTime = null;
+
+  function shrink() {
+    if (!startTime) {
+      startTime = performance.now();
+    }
+    const elapsedTime = performance.now() - startTime;
+    currentWidth -= widthStep;
+    currentHeight -= heightStep;
+    if (currentWidth <= _destSize || currentHeight <= _destSize) {
+      img.style.width = _destSize + "px";
+      img.style.height = _destSize + "px";
+      return;}
+
+    img.style.width = currentWidth + "px";
+    img.style.height = currentHeight + "px";
+    requestAnimationFrame(shrink);
+  }
+
+  requestAnimationFrame(shrink);
+}
+//imgShrinkToSquare('imgID3', 50, 5);
+
+
+/*
+function imgSpin(_imgID, _spinSpeed = 1, _duration = 5000, _angle = 0) {
+  const img = document.getElementById(_imgID);
+  const startTime = Date.now();
+  const endTime = startTime + _duration;
+
+  function rotate() {
+    const now = Date.now();
+    if (now >= endTime) return;
+    const elapsed = now - startTime;
+    const progress = elapsed / _duration;
+    const angle = progress * 360 * _spinSpeed + _angle;
+    img.style.transform = `rotate(${angle}deg)`;
+    requestAnimationFrame(rotate);}
+
+  requestAnimationFrame(rotate);
+}
+imgSpin('imgID1', 30, 3000, 360);
+////(spins one time, the default is 1 revolution @ 5 seconds)
+//imgSpin('imgID1');
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+function imgSpin(_imgID, _angle = 0) {
+  const img = document.getElementById(_imgID);
+  _angle += 1;
+  img.style.transform = 'rotate(' + _angle + 'deg)';
+  if (_angle < 360) {
+    setTimeout(() => imgSpin(_imgID, _angle), 1000/60);
+  }
+}
+*/
+/*
+const div1 = document.createElement("div");
+div1.id = '_div1';
+const img1 = document.createElement("img");
+img1.id = '_img1';
+img1.src = './testIMGcabin.jpg';
+img1.style = 'z-index:1 ; position:relative; top:auto; left:auto; display:block; width:100%; height:auto;';
+div1.appendChild(img1);
+
+const div2 = document.createElement("div");
+div2.id = '_div2';
+const img2 = document.createElement("img");
+img2.id = '_img2';
+img2.src = './testIMGbeach.jpg';
+img2.style = 'z-index:2 ; position:relative; top:auto; left:auto; display:block; width:100%; height:auto;';
+div2.appendChild(img2);
+
+const div3 = document.createElement("div");
+div3.id = '_div3';
+const img3 = document.createElement("img");
+img3.id = '_img3';
+img3.src = './testIMGblack.png';
+img3.style = 'z-index:2 ; position:relative; top:auto; left:auto; display:block; width:100%; height:auto;';
+div3.appendChild(img3);
+
+const div4 = document.createElement("div");
+div4.id = '_div4';
+const img4 = document.createElement("img");
+img4.id = '_img3';
+img4.src = './testIMGcross.png';
+img4.style = 'z-index:2 ; position:relative; top:auto; left:auto; display:block; width:100%; height:auto;';
+div4.appendChild(img4);
+*/
+
+//document.body.append(div4, div1, div2, div3);
+
+</script>
+
+</body>
+</html>

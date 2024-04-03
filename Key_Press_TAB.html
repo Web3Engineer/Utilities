@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+    <button onclick="pasteFromClipboard()">Paste</button>
+
+    <div id="output"></div>
+
+    <input id="input1" tabindex="1">
+    <input id="input2" tabindex="2">
+    <!-- Add more input elements as needed -->
+
+<script>
+function pasteFromClipboard() {
+  navigator.clipboard.readText().then(clipText => {
+    // Get the currently focused element
+    const activeElement = document.activeElement;
+
+    // Set the value of the active input element
+    if (activeElement.tagName === 'INPUT') {
+      activeElement.value = clipText;
+    }
+    
+    // Move focus to the next form element with tabindex
+    const nextElement = document.querySelector(`[tabindex="${(activeElement.tabIndex || 0) + 1}"]`);
+    if (nextElement) {
+      nextElement.focus();
+    }
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<body>
+<script>
+let clickCount = 0;
+document.addEventListener('click', () => {
+clickCount++;
+if (clickCount === 3) {
+document.getElementById("text-55dd8989-f44f-4477-88d9-86515806f67d-field").value = "ggg";
+clickCount = 0;
+const tabKeyEvent = new KeyboardEvent('keydown', {
+                    key: 'Tab',
+                    code: 'Tab',
+                    keyCode: 9,
+                    which: 9,
+                    shiftKey: false,
+                    altKey: false,
+                    ctrlKey: false,
+                    metaKey: false,
+                });
+                document.dispatchEvent(tabKeyEvent);
+
+                // Simulate an "ENTER" key press event
+                const enterKeyEvent = new KeyboardEvent('keydown', {
+                    key: 'Enter',
+                    code: 'Enter',
+                    keyCode: 13,
+                    which: 13,
+                    shiftKey: false,
+                    altKey: false,
+                    ctrlKey: false,
+                    metaKey: false,
+                });
+                document.dispatchEvent(enterKeyEvent);
+}});
+
+</script>
+</body>
